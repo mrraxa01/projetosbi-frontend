@@ -23,6 +23,16 @@ export class AuthService{
             
         });
      }
+     //não precisa passar as credenciais pelo método pq o header vai pelo interceptor
+     refreshToken(){
+        return this.http.post(`${API_CONFIG.baseUrl}/auth/refresh_token`,
+        {},
+        {
+            observe: 'response',
+            responseType: 'text',
+            
+        });
+     }
      sucessfulLogin(authorazitionValue: string){
         //vai pegar o token a partir do carcter 7 eliminando o 'BEAR '
         let tok = authorazitionValue.substring(7);
