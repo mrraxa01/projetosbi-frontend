@@ -16,7 +16,7 @@ export class HomePage {
   }
 
   constructor(
-    public navCtrl: NavController, 
+    public navCtrl: NavController,
     public menu: MenuController,
     public auth: AuthService) {
 
@@ -29,25 +29,25 @@ export class HomePage {
     }
 
     /*ionViewDidEnter(){
-    
+
       this.auth.refreshToken()
     .subscribe(response => {
       this.auth.sucessfulLogin(response.headers.get('Authorization'));
       this.navCtrl.setRoot('CategoriasPage');
     },
     error => {});
-      
+
     }*/
     ionViewDidEnter(){
       this.auth.refreshToken()
-    .subscribe(response => { 
+    .subscribe(response => {
       this.auth.sucessfulLogin(response.headers.get('Authorization'));
       this.navCtrl.setRoot('CategoriasPage');
     },
     error => {});
-      
+
   }
-    
+
   login(){
     this.auth.authenticate(this.creds)
     .subscribe(response => {
@@ -56,7 +56,7 @@ export class HomePage {
       this.navCtrl.setRoot('CategoriasPage');
     },
     error => {});
-    
+
   }
   signup(){
     this.navCtrl.push('SignupPage');
