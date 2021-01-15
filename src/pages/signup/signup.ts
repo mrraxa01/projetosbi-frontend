@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AlertController, IonicPage, NavController, NavParams } from 'ionic-angular';
 import { CidadeDTO } from '../../models/cidade.dto';
 import { EstadoDTO } from '../../models/estado.dto';
+import { ClienteService } from '../../services/cliente.service';
 import { CidadeService } from '../../services/domain/cidade.service';
 import { EstadoService } from '../../services/domain/estado.service';
 
@@ -23,7 +24,9 @@ export class SignupPage {
               public navParams: NavParams,
               public formBuilder: FormBuilder,
               public cidadeService: CidadeService,
-              public estadoService: EstadoService
+              public estadoService: EstadoService,
+              public clienteService: ClienteService,
+              public alertCtrl: AlertController
               ) {
 
         this.formGroup = this.formBuilder.group({
@@ -75,8 +78,30 @@ export class SignupPage {
 
 
   signupUser(){
-    console.log("enviou o form");
-  }
 
+    this.clienteService.insert(this.formGroup.value)
+      .subscribe(response => {
+        this.showInsertOk();
+      },
+      error => {});
+  }
+  //se tiver sucesso na inserção vai apresentar o alert abaixo
+showInsertOk(){
+  let alert = this.alertCtrl.create({
+    title: 'Sucesso!',
+    message: 'Cadastro efetuado com sucesso!',
+    enableBackdropDismiss: false,
+    buttons: [
+      //qdo clicar no botão ok vai desempilhar a página de login
+      {
+        text: 'Ok',
+        handler: () =>{
+          this.navCtrl.pop();
+        }
+      }
+    ]
+  });
+  alert.present();
+}
 
 }
