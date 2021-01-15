@@ -15,10 +15,11 @@ import { AuthService } from '../services/auth.service';
 import { StorageService } from '../services/storage_service';
 import { ClienteService } from '../services/cliente.service';
 import { AuthInterceptorProvider } from '../interceptors/auth-interceptor';
+import { ProdutoService } from '../services/domain/produto.service';
 
 @NgModule({
   declarations: [
-    MyApp  
+    MyApp
   ],
   imports: [
     BrowserModule,
@@ -28,7 +29,7 @@ import { AuthInterceptorProvider } from '../interceptors/auth-interceptor';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp
-    
+
   ],
   providers: [
     StatusBar,
@@ -39,7 +40,8 @@ import { AuthInterceptorProvider } from '../interceptors/auth-interceptor';
     AuthInterceptorProvider,
     AuthService,
     StorageService,
-    ClienteService
+    ClienteService,
+    ProdutoService
   ]
 })
 export class AppModule {}
