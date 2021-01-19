@@ -17,10 +17,10 @@ export class MyApp {
 
   pages: Array<{title: string, component: string}>;
 
-  constructor(public platform: Platform, 
-    public statusBar: StatusBar, 
+  constructor(public platform: Platform,
+    public statusBar: StatusBar,
     public splashScreen: SplashScreen,
-    public auth: AuthService 
+    public auth: AuthService
     ){
     this.initializeApp();
 
@@ -28,6 +28,7 @@ export class MyApp {
     this.pages = [
       { title: 'Profile', component: 'ProfilePage' },
       { title: 'Categorias', component: 'CategoriasPage' },
+      { title: 'Carrinho', component: 'CartPage'},
       { title: 'Logout', component: ''}
     ];
 
@@ -52,6 +53,6 @@ export class MyApp {
         default:
           this.nav.setRoot(page.component);
     }
-    
+
   }
 }
