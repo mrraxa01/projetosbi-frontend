@@ -2,7 +2,6 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { API_CONFIG } from "../../config/api.config";
 import {Observable} from 'rxjs/Rx';
-import { StaticInjector } from "@angular/core/src/di/injector";
 import { ProdutoDTO } from "../../models/produto.dto";
 
 
